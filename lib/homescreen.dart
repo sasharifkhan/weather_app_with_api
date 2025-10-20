@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app_with_api2/fullreport.dart';
 
@@ -12,7 +13,9 @@ class Homescreen extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 8, 26, 38),
         automaticallyImplyLeading: false,
         leading: Icon(Icons.menu,color: Colors.white,),
-        actions: [IconButton(onPressed: (){}, icon: Icon(Icons.sunny,color: Colors.white,)), IconButton(onPressed: (){}, icon: Icon(Icons.bedtime_outlined,color: Colors.blue,))],
+        actions: [
+          Switch(dragStartBehavior: DragStartBehavior.start , value: false, onChanged: null)
+        ],
       ),
       body: Center(
         child: Padding(
@@ -20,7 +23,7 @@ class Homescreen extends StatelessWidget {
           child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             Text("Toronto Ontario",style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
             Text("Today, 26 Jul",style: TextStyle(fontSize: 16,color: Colors.white60),),
-            SizedBox(height: 250, width: 250, child: Image(image: NetworkImage("https://cdn-icons-png.flaticon.com/512/6974/6974845.png"))),
+            SizedBox(height: 200, width: 200, child: Image(image: NetworkImage("https://cdn-icons-png.flaticon.com/512/6974/6974845.png"))),
             Text("36°",style: TextStyle(fontSize: 36,fontWeight: FontWeight.bold,color: Colors.white),),
             Text("Thunder Overcast",style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
