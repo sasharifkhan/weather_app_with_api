@@ -7,6 +7,7 @@ class ApiCalling {
     getweatherDetails()async {
       String q = 'Dhaka';
       final response = await http.get(Uri.parse('http://api.weatherapi.com/v1/current.json?key=72e7e4f689134be0b3640336252309&q=$q'));
+      int responseStatusCode = response.statusCode;
       if (response.statusCode==200){
         final jsonData = jsonDecode(response.body);
         final tempC=  jsonData['current']['temp_c'].toString();
@@ -26,7 +27,7 @@ class ApiCalling {
         print('humidity: $humidity');
         print('feelslikeTempc: $feelslikeTempC');
       } else{
-        print('Error');
+        print('Error $responseStatusCode');
       }
 
 
