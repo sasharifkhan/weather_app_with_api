@@ -9,6 +9,7 @@ class ApiCalling {
       final jsonData = jsonDecode(response.body);
       final tempC=  jsonData['current']['temp_c'].toString();
       final location=  jsonData['location']['name'].toString();
+      final localTime=  jsonData['location']['localtime'].toString();
       final tempIcon=  jsonData['current']['condition']['icon'].toString();
       final tempText=  jsonData['current']['condition']['text'].toString();
       final windKmph=  jsonData['current']['wind_kph'].toString();
@@ -16,6 +17,7 @@ class ApiCalling {
       final feelslikeTempC=  jsonData['current']['feelslike_c'].toString();
       print('tempC: $tempC');
       print('location: $location');
+      print('localTime: $localTime');
       print('tempicon: $tempIcon');
       print('tempText $tempText');
       print('windkmph: $windKmph');

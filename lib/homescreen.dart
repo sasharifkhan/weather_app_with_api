@@ -19,7 +19,7 @@ class _HomescreenState extends State<Homescreen> {
   @override
   void initState() {
     super.initState();
-    ApiCalling().gettempC_logation();
+    ApiCalling().getweatherDetails();
   }
 
   @override
