@@ -1,9 +1,26 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app_with_api2/api_calling.dart';
 import 'package:weather_app_with_api2/fullreport.dart';
 
-class Homescreen extends StatelessWidget {
+
+class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
+
+  @override
+  State<Homescreen> createState() => _HomescreenState();
+}
+
+class _HomescreenState extends State<Homescreen> {
+
+  
+
+
+  @override
+  void initState() {
+    super.initState();
+    ApiCalling().gettempC_logation();
+  }
 
   @override
   Widget build(BuildContext context) {
