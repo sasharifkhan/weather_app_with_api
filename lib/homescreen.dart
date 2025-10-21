@@ -61,8 +61,9 @@ class _HomescreenState extends State<Homescreen> {
           padding: const EdgeInsets.only(left: 20,right: 20),
           child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             Text('$location_name',style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
-            Text("Today, 26 Jul",style: TextStyle(fontSize: 16,color: Colors.white60),),
-            SizedBox(height: 200, width: 200, child: Image(image: NetworkImage("https://cdn-icons-png.flaticon.com/512/6974/6974845.png"))),
+            // Text("Today, 26 Jul",style: TextStyle(fontSize: 16,color: Colors.white60),),
+            Text("$localtime",style: TextStyle(fontSize: 16,color: Colors.white60),),
+            SizedBox(height: 200, width: 200, child: Image(image: NetworkImage("https:$tempIcon"))),
             Text("$feelslike_c",style: TextStyle(fontSize: 36,fontWeight: FontWeight.bold,color: Colors.white),),
             Text("$tempText",style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
