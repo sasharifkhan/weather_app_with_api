@@ -4,30 +4,25 @@ import 'package:http/http.dart' as http ;
 
 class ApiCalling {
 
-    getweatherDetails()async {
+    Future<Map<String, String>> getweatherDetails()async {
       String q = 'Dhaka';
       final response = await http.get(Uri.parse('http://api.weatherapi.com/v1/current.json?key=72e7e4f689134be0b3640336252309&q=$q'));
-      int responseStatusCode = response.statusCode;
       if (response.statusCode==200){
         final jsonData = jsonDecode(response.body);
-        final tempC=  jsonData['current']['temp_c'].toString();
-        final location=  jsonData['location']['name'].toString();
-        final localTime=  jsonData['location']['localtime'].toString();
-        final tempIcon=  jsonData['current']['condition']['icon'].toString();
-        final tempText=  jsonData['current']['condition']['text'].toString();
-        final windKmph=  jsonData['current']['wind_kph'].toString();
-        final humidity=  jsonData['current']['humidity'].toString();
-        final feelslikeTempC=  jsonData['current']['feelslike_c'].toString();
-        print('tempC: $tempC');
-        print('location: $location');
-        print('localTime: $localTime');
-        print('tempicon: $tempIcon');
-        print('tempText $tempText');
-        print('windkmph: $windKmph');
-        print('humidity: $humidity');
-        print('feelslikeTempc: $feelslikeTempC');
+        return{
+        'temp_c':  jsonData['current']['temp_c'].toString(),
+        'location_name' :  jsonData['location']['name'].toString(),
+        'localtime':  jsonData['location']['localtime'].toString(),
+        'tempIcon': jsonData['current']['condition']['icon'].toString(),
+        'tempText': jsonData['current']['condition']['text'].toString(),
+        'wind_kph':  jsonData['current']['wind_kph'].toString(),
+        'humidity':  jsonData['current']['humidity'].toString(),
+        'feelslike_c' :  jsonData['current']['feelslike_c'].toString()
+        };
+
       } else{
-        print('Error $responseStatusCode');
+        print('Error ${response.statusCode}');
+        return{};
       }
 
 

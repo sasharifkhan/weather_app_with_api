@@ -13,14 +13,36 @@ class Homescreen extends StatefulWidget {
 
 class _HomescreenState extends State<Homescreen> {
 
-  
-
+  String? temp_c;
+  String? location_name;
+  String? localtime;
+  String? tempIcon;
+  String? tempText;
+  String? wind_kph;
+  String? humidity;
+  String? feelslike_c;
 
   @override
-  void initState() {
+  void initState(){
     super.initState();
-    ApiCalling().getweatherDetails();
+    fetchweather();
   }
+  
+    void fetchweather()async{
+    var data = await ApiCalling().getweatherDetails();
+    setState(() {
+      temp_c = data['temp_c'];
+      location_name = data['location_name'];
+      localtime = data['localtime'];
+      tempIcon = data['tempIcon'];
+      tempText = data['tempText'];
+      wind_kph = data['wind_kph'];
+      humidity = data['humidity'];
+      feelslike_c = data['feelslike_c'];
+    });
+    }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,23 +60,23 @@ class _HomescreenState extends State<Homescreen> {
         child: Padding(
           padding: const EdgeInsets.only(left: 20,right: 20),
           child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-            Text("Toronto Ontario",style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
+            Text('$location_name',style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
             Text("Today, 26 Jul",style: TextStyle(fontSize: 16,color: Colors.white60),),
             SizedBox(height: 200, width: 200, child: Image(image: NetworkImage("https://cdn-icons-png.flaticon.com/512/6974/6974845.png"))),
-            Text("36°",style: TextStyle(fontSize: 36,fontWeight: FontWeight.bold,color: Colors.white),),
-            Text("Thunder Overcast",style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
+            Text("$feelslike_c",style: TextStyle(fontSize: 36,fontWeight: FontWeight.bold,color: Colors.white),),
+            Text("$tempText",style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
               Column(children: [
                 Text("Temp",style: TextStyle(color: Colors.white60,fontSize: 18),),
-                Text("28°",style: TextStyle(color: Colors.white,fontSize: 25),)
+                Text("$temp_c°",style: TextStyle(color: Colors.white,fontSize: 25),)
               ],),
               Column(children: [
                 Text("Wind",style: TextStyle(color: Colors.white60,fontSize: 18),),
-                Text("13km/h",style: TextStyle(color: Colors.white,fontSize: 25),)
+                Text("$wind_kph km/h",style: TextStyle(color: Colors.white,fontSize: 25),)
               ],),
               Column(children: [
                 Text("Humidity",style: TextStyle(color: Colors.white60,fontSize: 18),),
-                Text("84%",style: TextStyle(color: Colors.white,fontSize: 25),)
+                Text("$humidity%",style: TextStyle(color: Colors.white,fontSize: 25),)
               ],)
             ],),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center, children: [
