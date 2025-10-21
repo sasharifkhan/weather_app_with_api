@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_with_api2/api_calling.dart';
 
-class Fullreport extends StatelessWidget {
+class Fullreport extends StatefulWidget {
   const Fullreport({super.key});
 
+  @override
+  State<Fullreport> createState() => _FullreportState();
+}
+
+class _FullreportState extends State<Fullreport> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -4,6 +4,7 @@ import 'package:weather_app_with_api2/api_calling.dart';
 import 'package:weather_app_with_api2/fullreport.dart';
 
 
+
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
 
@@ -29,7 +30,8 @@ class _HomescreenState extends State<Homescreen> {
   }
   
     void fetchweather()async{
-    var data = await ApiCalling().getweatherDetails();
+    var data = await ApiCallingCurrent().getweatherDetails();
+    // ApiCallingForecast().getweatherDetailsForecast();
     setState(() {
       temp_c = data['temp_c'];
       location_name = data['location_name'];
@@ -41,7 +43,6 @@ class _HomescreenState extends State<Homescreen> {
       feelslike_c = data['feelslike_c'];
     });
     }
-
 
 
   @override
@@ -62,7 +63,7 @@ class _HomescreenState extends State<Homescreen> {
           child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             Text('$location_name',style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
             // Text("Today, 26 Jul",style: TextStyle(fontSize: 16,color: Colors.white60),),
-            Text("$localtime",style: TextStyle(fontSize: 16,color: Colors.white60),),
+            Text("Today, $localtime",style: TextStyle(fontSize: 16,color: Colors.white60),),
             SizedBox(height: 200, width: 200, child: Image(image: NetworkImage("https:$tempIcon"))),
             Text("$feelslike_c",style: TextStyle(fontSize: 36,fontWeight: FontWeight.bold,color: Colors.white),),
             Text("$tempText",style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
