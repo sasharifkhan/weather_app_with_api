@@ -1,16 +1,18 @@
 // ignore_for_file: non_constant_identifier_names
 
-class WeatherModel{
-  final String name;
+class WeatherModelCurrent{
+  final String location_name;
   final String localtime;
   final double temp_c;
-  final String text;
-  final String icon;
+  final String tempText;
+  final String tempIcon;
   final double wind_kph;
   final double humidity;
   final double feelslike_c;
 
-  WeatherModel({required this.name, required this.localtime, required this.temp_c, required this.text, required this.icon, required this.wind_kph, required this.humidity, required this.feelslike_c});
+  WeatherModelCurrent({required this.location_name, required this.localtime, required this.temp_c, required this.tempText, required this.tempIcon, required this.wind_kph, required this.humidity, required this.feelslike_c});
+
+  
   
   
   
