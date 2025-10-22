@@ -8,7 +8,7 @@ class ApiCallingCurrent {
     Future<Map<String, String>> getweatherDetails()async {
       
       // String q = '47.8567,2.0508';
-      String q = 'Rangpur';
+      String q = 'Dhaka';
       String key = '72e7e4f689134be0b3640336252309';
       String path = 'current.json';
       final response = await http.get(Uri.parse('http://api.weatherapi.com/v1/$path?key=$key&q=$q'));

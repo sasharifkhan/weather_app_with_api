@@ -67,7 +67,7 @@ class _HomescreenState extends State<Homescreen> {
             // Text("Today, 26 Jul",style: TextStyle(fontSize: 16,color: Colors.white60),),
             Text("Today, $localtime",style: TextStyle(fontSize: 16,color: Colors.white60),),
             SizedBox(height: 200, width: 200, child: Image(image: NetworkImage("https:$tempIcon"))),
-            Text("$feelslike_c",style: TextStyle(fontSize: 36,fontWeight: FontWeight.bold,color: Colors.white),),
+            Text("$feelslike_c°",style: TextStyle(fontSize: 36,fontWeight: FontWeight.bold,color: Colors.white),),
             Text("$tempText",style: TextStyle(fontSize: 28,color: Colors.white,fontWeight: FontWeight.w500),),
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
               Column(children: [
