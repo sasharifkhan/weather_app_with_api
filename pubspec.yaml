@@ -38,6 +38,7 @@ dependencies:
   http: ^1.5.0
   geolocator: ^14.0.2
   intl: ^0.20.2
+  baseflow_plugin_template: ^2.2.0
 
 dev_dependencies:
   flutter_test:

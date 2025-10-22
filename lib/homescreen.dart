@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app_with_api2/api_calling.dart';

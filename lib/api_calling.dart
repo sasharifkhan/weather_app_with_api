@@ -7,6 +7,7 @@ class ApiCallingCurrent {
 
     Future<Map<String, String>> getweatherDetails()async {
       
+      // String q = '47.8567,2.0508';
       String q = 'Dhaka';
       final response = await http.get(Uri.parse('http://api.weatherapi.com/v1/current.json?key=72e7e4f689134be0b3640336252309&q=$q'));
       if (response.statusCode==200){
@@ -29,7 +30,7 @@ class ApiCallingCurrent {
         };
 
       } else{
-        print('Error ${response.statusCode}');
+        // print('Error ${response.statusCode}');
         return{};
       }
 
@@ -42,8 +43,8 @@ class ApiCallingForecast{
   getweatherDetailsForecast()async {
     final response = await http.get(Uri.parse('http://api.weatherapi.com/v1/forecast.json?key=72e7e4f689134be0b3640336252309&q=Dhaka&days=7'));
     if (response.statusCode == 200){
-      final jsonData = jsonDecode(response.body);
-      print(jsonData);
+      // final jsonData = jsonDecode(response.body);
+      // print(jsonData);
     }
   }
 

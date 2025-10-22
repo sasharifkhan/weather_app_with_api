@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 class WeatherModel{
   final String name;
   final String localtime;
