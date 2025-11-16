@@ -1,16 +1,16 @@
 // import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app_with_api2/homescreen.dart';
+import 'package:weather_app_with_api2/ui/screens/homescreen.dart';
 
 void main() {
-  // runApp(DevicePreview(builder: (context) => MyApp(),));
-  runApp(MyApp(),);
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,

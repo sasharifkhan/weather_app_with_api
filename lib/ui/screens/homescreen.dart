@@ -3,8 +3,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app_with_api2/api_calling.dart';
-import 'package:weather_app_with_api2/fullreport.dart';
+import 'package:weather_app_with_api2/services/api%20services/api_calling.dart';
+import 'package:weather_app_with_api2/services/locationservices/getdevicelocation.dart';
+import 'package:weather_app_with_api2/ui/screens/fullreport.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -14,6 +15,24 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+  String locationcoordinate = "Dhaka";
+
+  @override
+  void initState() {
+    super.initState();
+    getlocation();
+  }
+
+  getlocation() async {
+    final location = await LocationService.getCurrentLocation();
+    String latitude = '${location['latitude']}';
+    String longitude = '${location['longitude']}';
+    String locationcoordinatefromdevice = "$latitude,$longitude";
+    setState(() {
+      locationcoordinate = locationcoordinatefromdevice;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +50,7 @@ class _HomescreenState extends State<Homescreen> {
         ],
       ),
       body: FutureBuilder(
-        future: ApiCalling().getweatherDetails(),
+        future: ApiCalling().getweatherDetails(locationcoordinate),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Container(
@@ -162,7 +181,9 @@ class _HomescreenState extends State<Homescreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Fullreport(),
+                                builder: (context) => Fullreport(
+                                  locationcoordinate: locationcoordinate,
+                                ),
                               ),
                             );
                           },
@@ -181,7 +202,9 @@ class _HomescreenState extends State<Homescreen> {
                     SizedBox(
                       height: 100,
                       child: FutureBuilder(
-                        future: ApiCalling().getweatherDetailsForecast(),
+                        future: ApiCalling().getweatherDetailsForecast(
+                          locationcoordinate,
+                        ),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {

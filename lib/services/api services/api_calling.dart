@@ -5,11 +5,15 @@ import 'package:weather_app_with_api2/models/forecastmodel.dart';
 
 class ApiCalling {
   // String q = '47.8567,2.0508';
-  String q = 'Dhaka';
+  // String q = 'Dhaka';
   String key = '72e7e4f689134be0b3640336252309';
   String path = 'current.json';
 
-  Future<Currentweathermodel?> getweatherDetails() async {
+  Future<Currentweathermodel?> getweatherDetails(String q) async {
+    if (q == "null,null") {
+      q = "Dhaka";
+    }
+
     try {
       final response = await http.get(
         Uri.parse('http://api.weatherapi.com/v1/$path?key=$key&q=$q'),
@@ -30,7 +34,10 @@ class ApiCalling {
     return null;
   }
 
-  Future<List<Forecastmodel>?> getweatherDetailsForecast() async {
+  Future<List<Forecastmodel>?> getweatherDetailsForecast(String q) async {
+    if (q == "null,null") {
+      q = "Dhaka";
+    }
     try {
       final response = await http.get(
         Uri.parse(

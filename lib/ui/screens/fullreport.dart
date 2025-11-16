@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app_with_api2/api_calling.dart';
+import 'package:weather_app_with_api2/services/api%20services/api_calling.dart';
 
 class Fullreport extends StatefulWidget {
-  const Fullreport({super.key});
+  final String locationcoordinate;
+  const Fullreport({super.key, required this.locationcoordinate});
 
   @override
   State<Fullreport> createState() => _FullreportState();
@@ -25,7 +26,7 @@ class _FullreportState extends State<Fullreport> {
         ],
       ),
       body: FutureBuilder(
-        future: ApiCalling().getweatherDetailsForecast(),
+        future: ApiCalling().getweatherDetailsForecast(widget.locationcoordinate),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Container(
