@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -52,7 +50,8 @@ class _HomescreenState extends State<Homescreen> {
       body: FutureBuilder(
         future: ApiCalling().getweatherDetails(locationcoordinate),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          if (snapshot.connectionState == ConnectionState.waiting ||
+              snapshot.connectionState != ConnectionState.done) {
             return Container(
               color: Colors.black,
               child: Center(
@@ -238,7 +237,7 @@ class _HomescreenState extends State<Homescreen> {
                                   Text(
                                     onlyTime,
                                     style: TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 12,
                                       color: Colors.white60,
                                     ),
                                   ),

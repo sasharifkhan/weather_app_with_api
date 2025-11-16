@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:weather_app_with_api2/models/currentweathermodel.dart';
 import 'package:weather_app_with_api2/models/forecastmodel.dart';
@@ -28,6 +29,7 @@ class ApiCalling {
       );
       if (response.statusCode == 200) {
         final jsonData = jsonDecode(response.body);
+        log(jsonData);
         return Currentweathermodel.fromJson(jsonData);
       }
     }
